@@ -1,0 +1,20 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+    <h1>Messages</h1>
+
+    {% for message in messages %}
+        <p>
+            <strong>From:</strong> {{ message.sender }}<br>
+            <strong>Subject:</strong> {{ message.subject }}<br>
+            <strong>Sent At:</strong> {{ message.sent_at }}<br>
+            <strong>Body:</strong> {{ message.body }}<br>
+            <strong>Status:</strong> {% if message.is_read %}Read{% else %}Unread{% endif %}
+        </p>
+        <hr>
+    {% empty %}
+        <p>No messages found.</p>
+    {% endfor %}
+{% endblock %}

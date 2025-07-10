@@ -1,0 +1,14 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Edit Notes{% endblock %}
+
+{% block content %}
+  <h1>Edit Notes for {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</h1>
+  <p><strong>Appointment Date:</strong> {{ appointment.appointment_date }}</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <textarea name="notes" rows="10" cols="80">{{ appointment.notes }}</textarea><br><br>
+    <button type="submit">💾 Save Notes</button>
+  </form>
+{% endblock %}

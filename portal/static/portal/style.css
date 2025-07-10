@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #f6f8fa;
+    color: #333;
+}
+
+h1, h2 {
+    color: #2a5885;
+}
+
+nav {
+    background-color: #2a5885;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+nav a {
+    color: white;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #2a5885;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4066;
+}

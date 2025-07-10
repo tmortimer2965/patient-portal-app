@@ -1,0 +1,34 @@
+{% extends "portal/base.html" %}
+{% block content %}
+  <h1>Welcome, Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h1>
+  <p>
+    <a href="{% url 'doctor_patients' %}">👥 View My Patients</a>
+  </p>
+  <h2>Upcoming Appointments</h2>
+  {% if appointments %}
+    <ul>
+      {% for appointment in appointments %}
+        <li>
+          <a href="{% url 'edit_notes' appointment.id %}">
+            {{ appointment.appointment_date }} with {{ appointment.patient.first_name }} {{ appointment.patient.last_name }} ({{ appointment.reason }})
+          </a>
+          {% if appointment.notes %}<br>📝{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No upcoming appointments.</p>
+  {% endif %}
+  <h2>Messages Sent</h2>
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>
+          To {{ message.recipient.first_name }} {{ message.recipient.last_name }}: {{ message.subject }} ({{ message.sent_at }})
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No messages sent.</p>
+  {% endif %}
+{% endblock %}

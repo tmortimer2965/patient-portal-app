@@ -1,0 +1,25 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Welcome, {{ patient.first_name }} {{ patient.last_name }}</h1>
+
+    <h2>Next Appointment:</h2>
+    {% if next_appointment %}
+        <p>
+            <strong>Date:</strong> {{ next_appointment.appointment_date }}<br>
+            <strong>Doctor:</strong> {{ next_appointment.doctor }}<br>
+            <strong>Reason:</strong> {{ next_appointment.reason }}<br>
+            <strong>Status:</strong> {{ next_appointment.status }}<br>
+        </p>
+    {% else %}
+        <p>No upcoming appointments.</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'appointment_list' %}">📅 View All Appointments</a><br>
+        <a href="{% url 'appointment_create_view' %}">🆕 Book a New Appointment</a><br>
+        <a href="{% url 'message_list' %}">📨 View Messages</a>
+    </p>
+{% endblock %}

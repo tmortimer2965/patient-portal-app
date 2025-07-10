@@ -1,0 +1,19 @@
+{% extends "portal/base.html" %}
+
+{% block title %}All Appointments{% endblock %}
+
+{% block content %}
+    <h1>Appointments</h1>
+
+    {% for appointment in appointments %}
+        <p>
+            <strong>Date:</strong> {{ appointment.appointment_date }}<br>
+            <strong>Doctor:</strong> {{ appointment.doctor }}<br>
+            <strong>Reason:</strong> {{ appointment.reason }}<br>
+            <strong>Status:</strong> {{ appointment.status }}<br>
+        </p>
+        <hr>
+    {% empty %}
+        <p>No appointments found.</p>
+    {% endfor %}
+{% endblock %}

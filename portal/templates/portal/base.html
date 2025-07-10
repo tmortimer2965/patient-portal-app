@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Portal</title>
+    <link rel="stylesheet" href="{% static 'portal/style.css' %}">
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            <p>
+                👤 Logged in as {{ user.username }} |
+                <a href="{% url 'dashboard' %}">🏠 Dashboard</a> |
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">🚪 Logout</button>
+                </form>
+            </p>
+        {% else %}
+            <p><a href="{% url 'login' %}">🔐 Login</a></p>
+        {% endif %}
+    </nav>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
